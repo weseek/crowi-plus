@@ -67,6 +67,14 @@ class SlackBotService extends S2sMessageHandlable {
     }
   }
 
+  async runCommand(command, client, body, args) {
+    const module = `./slack-command/${command}`;
+    const commandRunner = require(module)(this.crowi);
+
+    console.log('ここぜよ！');
+    await commandRunner.runCommand(client, body, args);
+  }
+
   async notCommand(client, body) {
     logger.error('Invalid first argument');
     client.chat.postEphemeral({
