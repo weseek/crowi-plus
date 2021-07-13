@@ -103,6 +103,7 @@ module.exports = (crowi) => {
     const args = body.text.split(' ');
     const command = args[0];
 
+    // ここをモジュールベースにしたい
     try {
       switch (command) {
         case 'search':
