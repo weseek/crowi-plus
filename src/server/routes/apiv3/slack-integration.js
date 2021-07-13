@@ -115,6 +115,9 @@ module.exports = (crowi) => {
         case 'help':
           await crowi.slackBotService.helpCommand(client, body);
           break;
+        case 'togetter':
+          await crowi.slackBotService.togetterCommand(client, body, args);
+          break;
         default:
           await crowi.slackBotService.notCommand(client, body);
           break;
@@ -160,6 +163,18 @@ module.exports = (crowi) => {
         const { body, args, offset } = parsedValue;
         const newOffset = offset + 10;
         await crowi.slackBotService.showEphemeralSearchResults(client, body, args, newOffset);
+        break;
+      }
+      case 'togetterShowMore': {
+        console.log('ここでShow moreする');
+        break;
+      }
+      case 'togetterCreatePage': {
+        console.log('ここでpageCreateGrowiしてメッセージを消すなどする');
+        break;
+      }
+      case 'togetterCancelPageCreation': {
+        console.log('ここでCancelする');
         break;
       }
       default:
